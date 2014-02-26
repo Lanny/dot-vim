@@ -15,6 +15,9 @@ map cqt :Require<CR>:Eval (clojure.test/run-tests)<CR>
 map cqr :Require<CR>
 
 set nu!
+set tabstop=2 
+set shiftwidth=2 
+set expandtab
 
 if exists('+colorcolumn')
   set colorcolumn=80
