@@ -14,10 +14,22 @@ let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^for', '^cond']
 map cqt :Require<CR>:Eval (clojure.test/run-tests)<CR>
 map cqr :Require<CR>
 
+" global behaviour
 set nu!
+set expandtab
+
+" default behaviour
 set tabstop=2 
 set shiftwidth=2 
-set expandtab
+
+" per file type behaviour
+au FileType python setl sw=4 sts=4 ts=4 et
+
+" Make ctrlp ignore useless files
+set wildignore+=*.pyc,*.swp
+let g:ctrlp_custom_ignore = {
+\  'dir': '',
+\  'file': '\v\.(pyc|swp)$' }
 
 if exists('+colorcolumn')
   set colorcolumn=80
