@@ -22,3 +22,6 @@
 [submodule "bundle/MatchTagAlways.vim"]
 	path = bundle/MatchTagAlways.vim
 	url = https://github.com/Valloric/MatchTagAlways.git
+[submodule "bundle/golang-vim"]
+	path = bundle/golang-vim
+	url = https://github.com/jnwhiteh/vim-golang.git
