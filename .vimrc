@@ -11,6 +11,9 @@ au Syntax * RainbowParenthesesLoadBraces
 
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^for', '^cond']
 
+" We use fast computers, let's bump the paren depth
+let g:rbpt_max = 32
+
 map cqt :Require<CR>:Eval (clojure.test/run-tests)<CR>
 map cqr :Require<CR>
 
@@ -30,6 +33,15 @@ set wildignore+=*.pyc,*.swp
 let g:ctrlp_custom_ignore = {
 \  'dir': '',
 \  'file': '\v\.(pyc|swp)$' }
+
+" Make the paren matching plugin work with django templates
+let g:mta_filetypes = {
+\ 'html' : 1,
+\ 'xhtml' : 1,
+\ 'xml' : 1,
+\ 'jinja' : 1,
+\ 'htmldjango': 1
+\}
 
 if exists('+colorcolumn')
   set colorcolumn=80
