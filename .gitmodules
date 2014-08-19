@@ -25,3 +25,6 @@
 [submodule "bundle/golang-vim"]
 	path = bundle/golang-vim
 	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "pycomplexity"]
+	path = pycomplexity
+	url = https://github.com/garybernhardt/pycomplexity.git

@@ -19,8 +19,11 @@ let g:rbpt_max = 32
 map cqt :Require<CR>:Eval (clojure.test/run-tests)<CR>
 map cqr :Require<CR>
 
+" Bind F6 to recompute cyclomatic complexity for a file.
+nnoremap <silent> <F6> :Complexity<CR>
+
 " global behaviour
-set nu!
+set nu
 set expandtab
 set clipboard=unnamed
 
