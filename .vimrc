@@ -59,3 +59,7 @@ endif
 nmap <silent> <Tab> :wincmd w<CR>
 map <C-t> :NERDTreeToggle<CR>
 
+function English()
+  call pencil#init()
+  set spell
+endfunction
