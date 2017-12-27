@@ -11,3 +11,6 @@ rm old_plugins new_plugins
 
 echo "$1" >> plugins.txt
 echo "bundle/$plugin_name" >> .gitignore
+
+git add .gitignore plugins.txt
+git commit -m "Added plugin: $plugin_name"
