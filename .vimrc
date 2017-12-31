@@ -56,10 +56,15 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
+let NERDTreeIgnore = ['\.pyc$']
+
 nmap <silent> <Tab> :wincmd w<CR>
 map <C-t> :NERDTreeToggle<CR>
 
 function English()
-  call pencil#init()
+  call pencil#init({'wrap': 'soft'})
   set spell
 endfunction
+
+com -nargs=0 English call English()
+
