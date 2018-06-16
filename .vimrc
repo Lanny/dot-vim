@@ -26,6 +26,7 @@ nnoremap <silent> <F6> :Complexity<CR>
 set nu
 set expandtab
 set clipboard=unnamed
+set guioptions= " disable scrollbars
 
 " default behaviour
 set tabstop=2 
@@ -60,6 +61,7 @@ endif
 let NERDTreeIgnore = ['\.pyc$']
 
 nmap <silent> <Tab> :wincmd w<CR>
+nmap <silent> <S-Tab> :wincmd W<CR>
 map <C-t> :NERDTreeToggle<CR>
 
 function English()
