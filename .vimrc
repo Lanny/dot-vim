@@ -34,6 +34,7 @@ set shiftwidth=2
 " per file type behaviour
 au FileType python setl sw=4 sts=4 ts=4 et
 au FileType php setl sw=4 sts=4 ts=4 smartindent et
+au FileType tex English
 
 " Make ctrlp ignore useless files
 set wildignore+=*.pyc,*.swp
@@ -68,3 +69,4 @@ endfunction
 
 com -nargs=0 English call English()
 
+let g:jsx_ext_required = 0
