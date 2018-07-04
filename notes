@@ -1,0 +1,3 @@
+# To unfuck git commit message typeo abort stuff
+git config --global core.editor $(which vim)
+
