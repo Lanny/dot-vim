@@ -38,7 +38,7 @@ set shiftwidth=2
 " per file type behaviour
 au FileType python setl sw=4 sts=4 ts=4 et
 au FileType php setl sw=4 sts=4 ts=4 smartindent et
-au FileType tex English
+au BufReadPost,BufNewFile *.tex,*.md,COMMIT_EDITMSG English
 
 " Make ctrlp ignore useless files
 set wildignore+=*.pyc,*.swp
