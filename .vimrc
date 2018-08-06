@@ -19,6 +19,9 @@ let g:rbpt_max = 32
 map cqt :Require<CR>:Eval (clojure.test/run-tests)<CR>
 map cqr :Require<CR>
 
+" Sync default register with OSX clipboard
+set clipboard=unnamed
+
 " Bind F6 to recompute cyclomatic complexity for a file.
 nnoremap <silent> <F6> :Complexity<CR>
 
