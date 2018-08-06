@@ -58,17 +58,62 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
+let g:jsx_ext_required = 0
+
 let NERDTreeIgnore = ['\.pyc$']
 
 nmap <silent> <Tab> :wincmd w<CR>
 nmap <silent> <S-Tab> :wincmd W<CR>
 map <C-t> :NERDTreeToggle<CR>
 
-function English()
+function! English()
   call pencil#init({'wrap': 'soft'})
   set spell
 endfunction
 
-com -nargs=0 English call English()
+command! -nargs=0 English call English()
 
-let g:jsx_ext_required = 0
+" Reload vimrc file. I should have done this years ago
+if exists('*ReloadVimRC') == 0
+  function ReloadVimRC()
+    so ~/.vimrc
+  endfunction
+end
+
+command! -nargs=0 Reload call ReloadVimRC()
+
+" Enable cursorline in normal mode
+let g:lanny_cursorline = 1
+
+if g:lanny_cursorline
+  set cursorline
+end
+
+highlight CursorLine guibg=#4f0402
+highlight CursorLineNR guibg=#4f0402 guifg=#ffd77a
+
+function! CondCurLin()
+  if g:lanny_cursorline
+    set cursorline
+  else
+    set nocursorline
+  end
+endfunction
+
+autocmd InsertEnter * set nocursorline
+autocmd InsertLeave * call CondCurLin()
+
+autocmd WinEnter * set cursorline
+autocmd WinLeave * call CondCurLin()
+
+function! ToggleCursorLine()
+  if g:lanny_cursorline
+    let g:lanny_cursorline = 0
+    set nocursorline
+  else
+    let g:lanny_cursorline = 1
+    set cursorline
+  end
+endfunction
+
+nmap <silent> C :call ToggleCursorLine()<CR>
