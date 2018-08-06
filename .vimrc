@@ -85,8 +85,12 @@ end
 
 command! -nargs=0 Reload call ReloadVimRC()
 
-" Enable cursorline in normal mode
-let g:lanny_cursorline = 1
+" Enable cursorline in normal mode. Only with in gui mode
+if has("gui_running")
+  let g:lanny_cursorline = 1
+else
+  let g:lanny_cursorline = 0
+end
 
 if g:lanny_cursorline
   set cursorline
