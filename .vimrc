@@ -37,8 +37,12 @@ set shiftwidth=2
 
 " per file type behaviour
 au FileType python setl sw=4 sts=4 ts=4 et
+au FileType matlab setl sw=4 sts=4 ts=4 et
 au FileType php setl sw=4 sts=4 ts=4 smartindent et
 au BufReadPost,BufNewFile *.tex,*.md,COMMIT_EDITMSG English
+
+" notes file
+autocmd BufNewFile,BufRead notes set syntax=markdown | English
 
 " Make ctrlp ignore useless files
 set wildignore+=*.pyc,*.swp
@@ -92,10 +96,6 @@ else
   let g:lanny_cursorline = 0
 end
 
-if g:lanny_cursorline
-  set cursorline
-end
-
 highlight CursorLine guibg=#4f0402
 highlight CursorLineNR guibg=#4f0402 guifg=#ffd77a
 
@@ -110,8 +110,8 @@ endfunction
 autocmd InsertEnter * set nocursorline
 autocmd InsertLeave * call CondCurLin()
 
-autocmd WinEnter * set cursorline
-autocmd WinLeave * call CondCurLin()
+autocmd WinEnter * call CondCurLin()
+autocmd WinLeave * set nocursorline
 
 function! ToggleCursorLine()
   if g:lanny_cursorline
@@ -122,5 +122,7 @@ function! ToggleCursorLine()
     set cursorline
   end
 endfunction
+
+call CondCurLin()
 
 nmap <silent> C :call ToggleCursorLine()<CR>
