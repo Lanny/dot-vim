@@ -16,6 +16,9 @@ let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^for',
 " We use fast computers, let's bump the paren depth
 let g:rbpt_max = 32
 
+" Where to show line length ruler
+let g:char_ruler = 80
+
 map cqt :Require<CR>:Eval (clojure.test/run-tests)<CR>
 map cqr :Require<CR>
 
@@ -59,11 +62,6 @@ let g:mta_filetypes = {
 \ 'htmldjango': 1
 \}
 
-if exists('+colorcolumn')
-  set colorcolumn=80
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
 
 let g:jsx_ext_required = 0
 
@@ -107,11 +105,30 @@ function! CondCurLin()
   end
 endfunction
 
+function! EnableRuler()
+  if exists('+colorcolumn')
+    let &colorcolumn = g:char_ruler
+  else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>'.g:char_ruler.'v.\+', -1)
+  endif
+endfunction
+
+function! DisableRuler()
+  if exists('+colorcolumn')
+    set colorcolumn=
+  else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>0v.\+', -1)
+  endif
+endfunction
+
 autocmd InsertEnter * set nocursorline
 autocmd InsertLeave * call CondCurLin()
 
 autocmd WinEnter * call CondCurLin()
 autocmd WinLeave * set nocursorline
+
+autocmd WinEnter * call EnableRuler()
+"autocmd WinLeave * call DisableRuler()
 
 function! ToggleCursorLine()
   if g:lanny_cursorline
@@ -124,5 +141,6 @@ function! ToggleCursorLine()
 endfunction
 
 call CondCurLin()
+call EnableRuler()
 
 nmap <silent> C :call ToggleCursorLine()<CR>
