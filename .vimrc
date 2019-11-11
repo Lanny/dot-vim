@@ -4,11 +4,11 @@ colorscheme obsidian
 syntax on
 filetype plugin indent on
 
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
+" 
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^for', 
                                       \ '^cond', '^select', '^insert',
                                       \ '^update', '^delete']
