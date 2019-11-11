@@ -3,3 +3,4 @@ bundle/vim-pencil
 bundle/
 bundle/vim-jsx
 bundle/vim-pug
+bundle/django.vim
