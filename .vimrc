@@ -44,6 +44,9 @@ au FileType matlab setl sw=4 sts=4 ts=4 et
 au FileType php setl sw=4 sts=4 ts=4 smartindent et
 au BufReadPost,BufNewFile *.tex,*.md,COMMIT_EDITMSG English
 
+" Better line breaking
+set nowrap
+
 " notes file
 autocmd BufNewFile,BufRead notes set syntax=markdown | English
 
@@ -62,6 +65,12 @@ let g:mta_filetypes = {
 \ 'htmldjango': 1
 \}
 
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce (not to mention that libvte based terminals
+" incorrectly contain bce in their terminfo files). This causes
+" incorrect background rendering when using a color theme with a
+" background color.
+let &t_ut=''
 
 let g:jsx_ext_required = 0
 
@@ -144,3 +153,26 @@ call CondCurLin()
 call EnableRuler()
 
 nmap <silent> C :call ToggleCursorLine()<CR>
+
+let g:syntastic_check_on_wq = 0
+
+function! StartLinting()
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let b:syntastic_mode = 'active'
+  :SyntasticCheck
+  :Errors
+endfunction
+
+function! StopLinting()
+  let g:syntastic_always_populate_loc_list = 0
+  let g:syntastic_auto_loc_list = 0
+  let g:syntastic_check_on_open = 0
+  let b:syntastic_mode = 'passive'
+  :SyntasticReset
+  :lclose
+endfunction
+
+nmap <silent> gl :call StartLinting()<CR>
+nmap <silent> gL :call StopLinting()<CR>
