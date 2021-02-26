@@ -5,3 +5,4 @@ https://github.com/mxw/vim-jsx.git
 git://github.com/digitaltoad/vim-pug.git
 https://github.com/vim-scripts/django.vim.git
 https://github.com/vim-syntastic/syntastic.git
+https://github.com/peitalin/vim-jsx-typescript.git
