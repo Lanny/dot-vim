@@ -1,4 +1,14 @@
-execute pathogen#infect()
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'reedes/vim-pencil'
+Plug 'vim-syntastic/syntastic'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+
+call plug#end()
+
 
 colorscheme obsidian
 syntax on

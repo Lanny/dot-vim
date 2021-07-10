@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Install pathogen
-mkdir -p autoload bundle
-curl -LSso autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+#mkdir -p autoload bundle
+#curl -LSso autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+curl -fLo autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Pull plugins
 git pull && git submodule init && git submodule update && git submodule status
