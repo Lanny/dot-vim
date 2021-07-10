@@ -87,6 +87,12 @@ endfunction
 
 command! -nargs=0 English call English()
 
+function! SetServer()
+  execute "silent !echo " . v:servername . " > ~/.vimsid"
+endfunction
+
+command! -nargs=0 SetServer call SetServer()
+
 " Reload vimrc file. I should have done this years ago
 if exists('*ReloadVimRC') == 0
   function ReloadVimRC()
@@ -176,3 +182,12 @@ endfunction
 
 nmap <silent> gl :call StartLinting()<CR>
 nmap <silent> gL :call StopLinting()<CR>
+
+autocmd BufNewFile,BufRead *.tsx,*.jsx,*.js set filetype=typescriptreact
+
+hi tsxTagName guifg=#F8BD7F
+hi tsxCloseTagName guifg=#F8BD7F
+hi tsxComponentName guifg=#00a120
+hi tsxCloseComponentName guifg=#00a120
+hi tsxAttrib guifg=#0081cc gui=italic
+hi! def link tsxCloseTag tsxTag
