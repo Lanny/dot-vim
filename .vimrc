@@ -7,6 +7,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'hail2u/vim-css3-syntax'
 
 call plug#end()
 
@@ -200,9 +201,16 @@ nmap <silent> gL :call StopLinting()<CR>
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*.js set filetype=typescriptreact
 
+" Custom TSX syntax coloring
 hi tsxTagName guifg=#F8BD7F
 hi tsxCloseTagName guifg=#F8BD7F
 hi tsxComponentName guifg=#00a120
 hi tsxCloseComponentName guifg=#00a120
 hi tsxAttrib guifg=#0081cc gui=italic
 hi! def link tsxCloseTag tsxTag
+
+" Custom ctrl-p
+command! -bang -nargs=? -complete=dir MyCtrlP
+  \ call fzf#vim#files(<q-args>, {'options': ['--info=inline', '--tiebreak=end', '--preview', 'ptf {}']}, <bang>0)
+
+nmap <silent> <C-p> :MyCtrlP<CR>
