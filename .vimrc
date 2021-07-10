@@ -6,6 +6,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
@@ -53,6 +54,10 @@ au FileType python setl sw=4 sts=4 ts=4 et
 au FileType matlab setl sw=4 sts=4 ts=4 et
 au FileType php setl sw=4 sts=4 ts=4 smartindent et
 au BufReadPost,BufNewFile *.tex,*.md,COMMIT_EDITMSG English
+
+" Fix, at the cost of perf, JSX highligting retardation
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Better line breaking
 set nowrap
