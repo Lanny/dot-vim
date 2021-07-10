@@ -5,7 +5,6 @@ Plug 'reedes/vim-pencil'
 Plug 'vim-syntastic/syntastic'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'HerringtonDarkholme/yats.vim'
 Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
