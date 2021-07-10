@@ -5,3 +5,4 @@ bundle/vim-jsx
 bundle/vim-pug
 bundle/django.vim
 bundle/syntastic
+bundle/vim-jsx-typescript
